@@ -18,25 +18,61 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+            integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <!-- End of Bootstrap components -->
 
     <link rel="stylesheet" type="text/css" href="/static/css/custom.css" />
+
+    <script src="/static/js/main.js" type="module"></script>
 </head>
 
 <body>
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center ">
     <h1>Codecool Shop</h1>
 </div>
-
 <div class="container">
-    <div class="card">
-        <strong th:text="${category.name}">Category Title</strong>
+    <div class="user-interaction">
+        <div class="register" th:if="${session.userid == null}">
+            <a href="/register" class="btn btn-warning" id="register">Register</a>
+        </div>
+        <div class="login" th:if="${session.userid == null}">
+            <a href="/login" class="btn btn-warning" id="login">Login</a>
+        </div>
+        <div class="logout" th:unless="${session.userid == null}">
+            <a href="/logout" class="btn btn-warning" id="logout">Logout</a>
+        </div>
+        <div class="greeting" id="greetings" th:unless="${session.userid == null}">
+            <p th:text="'Welcome ' + ${session.userName} + '!'"> </p>
+        </div>
+    </div>
+    <div class="cart">
+        <a href="/cart" id="cart"><i class="bi bi-cart-fill"></i></a>
+        <span class='badge badge-warning' id='cart-count' th:text="${cartProducts.size()}" >0</span>
+    </div>
+
+    <div class="drop-down">
+        <div class="drop-downs">
+            <label><strong>Filter by Category</strong></label>
+            <select id="category-select">
+                <option th:each="category : ${categories}" th:id="${category.id}" th:text="${category.name}">
+                </option>
+            </select>
+        </div>
+        <div class="drop-downs">
+            <label><strong>Filter by Supplier</strong></label>
+            <select id="supplier-select">
+                <option th:each="supplier : ${suppliers}" th:id="${supplier.id}" th:text="${supplier.name}">
+                </option>
+            </select>
+        </div>
+        <a href="/" type="button" class="btn"></a>
     </div>
 
     <div id="products" class="row">
@@ -51,8 +87,8 @@
                     <div class="card-text">
                         <p class="lead" th:text="${prod.getPrice()}">100 USD</p>
                     </div>
-                    <div class="card-text">
-                        <a class="btn btn-success" href="#">Add to cart</a>
+                    <div class="card-text" th:unless="${session.userid == null}" >
+                        <button th:id="${prod.id}" class="btn btn-success">Add to cart</button>
                     </div>
                 </div>
             </div>

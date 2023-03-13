@@ -46,6 +46,9 @@ public class Product extends BaseModel {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
+    public int getProductCategoryId(){
+        return productCategory.getId();
+    }
 
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
@@ -54,6 +57,9 @@ public class Product extends BaseModel {
 
     public Supplier getSupplier() {
         return supplier;
+    }
+    public int getSupplierId(){
+        return supplier.getId();
     }
 
     public void setSupplier(Supplier supplier) {
@@ -76,4 +82,5 @@ public class Product extends BaseModel {
                 this.productCategory.getName(),
                 this.supplier.getName());
     }
+
 }

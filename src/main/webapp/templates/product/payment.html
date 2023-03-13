@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta charset="utf-8" />
+  <meta name="author" content="Codecool" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>CodeCool Shop - Payment</title>
+  <!-- Bootstrap components -->
+  <!-- Latest compiled and minified Jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+  <!--Latest compiled and minified Popper -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+          integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+          integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- End of Bootstrap components -->
+  <script src="/static/js/payment.js" type="module" defer></script>
+</head>
+<body>
+<div class="jumbotron text-center">
+  <h1>Codecool Shop</h1>
+</div>
+<div class="container">
+  <section class="h-100 h-custom" style="background-color: cadetblue;">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12">
+          <div class="card card-registration card-registration-2" style="border-radius: 15px;">
+            <div class="card-body p-0">
+              <div class="row g-0">
+                <div class="col-lg-8">
+                  <div class="p-5">
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                      <h1 class="fw-bold mb-0 text-black">Payment</h1>
+                      <h6 class="mb-0 text-muted" id="cart-size"
+                          th:text="${cartProducts.size()} + ' items'"></h6>
+                    </div>
+                    <hr class="my-4">
+                    <div class="col-12">
+                      <span>Payment Method</span>
+                      <div class="card">
+                        <div class="accordion" id="accordionExample">
+                          <div class="card">
+                            <div class="card-header p-0" id="headingTwo">
+                              <h2 class="mb-0">
+                                <button class="btn btn-light btn-block text-left collapsed p-3 rounded-0 border-bottom-custom" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                  <div class="d-flex align-items-center justify-content-between">
+                                    <span>Paypal</span>
+                                    <img src="https://i.imgur.com/7kQEsHU.png" width="30">
+                                  </div>
+                                </button>
+                              </h2>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                              <div class="card-body">
+                                <input type="text" class="form-control" placeholder="Paypal email">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card">
+                            <div class="card-header p-0">
+                              <h2 class="mb-0">
+                                <button class="btn btn-light btn-block text-left p-3 rounded-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                  <div class="d-flex align-items-center justify-content-between">
+                                    <span>Credit card</span>
+                                    <div class="icons">
+                                      <img src="https://i.imgur.com/2ISgYja.png" width="30">
+                                      <img src="https://i.imgur.com/W1vtnOV.png" width="30">
+                                    </div>
+                                  </div>
+                                </button>
+                              </h2>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                              <div class="card-body payment-card-body">
+                                <span class="font-weight-normal card-text">Card Number</span>
+                                <div class="input">
+                                  <i class="fa fa-credit-card"></i>
+                                  <input type="text" class="form-control" placeholder="0000 0000 0000 0000">
+                                </div>
+                                <div class="row mt-3 mb-3">
+                                  <div class="col-md-6">
+                                    <span class="font-weight-normal card-text">Expiry Date</span>
+                                    <div class="input">
+                                      <i class="fa fa-calendar"></i>
+                                      <input type="text" class="form-control" placeholder="MM/YY">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <span class="font-weight-normal card-text">CVC/CVV</span>
+                                    <div class="input">
+                                      <i class="fa fa-lock"></i>
+                                      <input type="text" class="form-control" placeholder="000">
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <hr class="my-4">
+                    <div class="pt-5">
+                      <h6 class="mb-0"><a href="/" class="text-body"><i
+                              class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 bg-grey">
+                  <div class="p-5">
+                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                    <hr class="my-4">
+                    <div class="d-flex justify-content-between mb-5">
+                      <h5 class="text-uppercase">Total price</h5>
+                      <h5 id="total-price" th:text="${totalPrice} + ' EUR'"></h5>
+                    </div>
+                    <button type="button" class="btn btn-dark btn-block btn-lg" id="checkout"
+                            data-mdb-ripple-color="dark">Pay
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+<div th:replace="footer.html :: copy"></div>
+</body>
+</html>
