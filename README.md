@@ -20,7 +20,8 @@ As this is a project developed in IntelliJ, the running instructions work best i
 
 1. Download the project onto your local machine.
 2. Open the project in IntelliJ IDEA. This is a Maven project, so you need to open the file `pom.xml`.
-3. Run the project with the configuration `jetty:run`.
+3. Connect a PSQL database.
+4. Run the project with the configuration `jetty:run`.
 
 ## Implementation
 
