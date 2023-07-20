@@ -16,7 +16,7 @@ Codecool Shop is an online eCommerce web-application. The store includes multipl
 
 ## Installation
 
-As this is a project developed in IntelliJ, the running instructions work best if you use the same IDE. In other cases, please feel free to research the way to run Maven JaxaFX projects with your chosen IDE.
+As this is a project developed in IntelliJ, the running instructions work best if you use the same IDE. In other cases, please feel free to research the way to run Maven projects with your chosen IDE.
 
 1. Download the project onto your local machine.
 2. Open the project in IntelliJ IDEA. This is a Maven project, so you need to open the file `pom.xml`.
